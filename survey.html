@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>May Chance pa ba?</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6f0;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ff4f81;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background: #ff4f81;
+            color: white;
+        }
+
+        #no {
+            background: #555;
+            color: white;
+            position: absolute;
+        }
+
+        #message {
+            display: none;
+            font-size: 25px;
+            color: #ff4f81;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="survey">
+
+        <h1>May chance pa bah? HAHAHAHAHAHHA</h1>
+
+        <p>Choose wisely...</p>
+
+        <form id="loveForm"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST">
+
+            <input type="hidden" name="answer" value="YES">
+
+            <button type="submit" id="yes">
+                igwa
+            </button><br><br>
+
+        </form>
+      
+        <button id="no">
+            mayo
+        </button>
+
+    </div>
+
+    <div id="message">
+        <h1>YIEEEEEE 😭❤️</h1>
+        <p>I KNEW IT! HAHAHAHAHA</p>
+    </div>
+
+
+    <script>
+
+        const noButton = document.getElementById("no");
+
+        noButton.addEventListener("mouseover", moveButton);
+        noButton.addEventListener("click", moveButton);
+
+        function moveButton() {
+
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        }
+
+        document.getElementById("loveForm").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            document.getElementById("survey").style.display = "none";
+            document.getElementById("message").style.display = "block";
+
+            // Submit to Formspree
+            fetch(this.action, {
+                method: "POST",
+                body: new FormData(this),
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
