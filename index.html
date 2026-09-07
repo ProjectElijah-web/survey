@@ -51,17 +51,11 @@
 
         <p>Choose wisely...</p>
 
-        <form id="loveForm"
-              action="https://formspree.io/f/xjyvagyy"
-              method="POST">
-
             <input type="hidden" name="answer" value="YES">
 
             <button type="submit" id="yes">
                 igwa
             </button><br><br>
-
-        </form>
       
         <button id="no">
             mayo
@@ -100,14 +94,6 @@
 
             document.getElementById("survey").style.display = "none";
             document.getElementById("message").style.display = "block";
-
-            // Submit to Formspree
-            fetch(this.action, {
-                method: "POST",
-                body: new FormData(this),
-                headers: {
-                    "Accept": "application/json"
-                }
             });
 
         });
